@@ -19,7 +19,7 @@ import {
 
 const MonacoEditor = ({value, onChangeText, height}) => {
   const inputRef = useRef(null);
-  const lines = value.split('\n');
+  const lines = value?.split('\n') ?? [''];
 
   return (
     <StyledScrollView className={height && `h-[${height}px]`}>
@@ -28,9 +28,9 @@ const MonacoEditor = ({value, onChangeText, height}) => {
         className={styles.container}>
         <StyledView
           className={`${styles.lineNumberContainer} ${
-            lines.length === 1 && 'top-[4px]'
+            lines?.length === 1 && 'top-[4px]'
           }`}>
-          {lines.map((_, index) => {
+          {lines?.map((_, index) => {
             return (
               <StyledView key={index}>
                 <StyledText className={styles.lineNumber}>
