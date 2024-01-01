@@ -37,7 +37,7 @@ const DropDownMenuView = () => {
   );
 
   return (
-    <StyledSafeAreaView className="h-full items-center">
+    <StyledSafeAreaView className="items-center">
       <DropDownMenu
         width={300}
         dropdownButton={DropDownButton}

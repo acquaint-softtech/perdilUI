@@ -20,11 +20,11 @@ const NavigationMenuView = () => {
             <StyledView className="w-48 rounded pt-28 pb-7 h-full bg-neutral-800">
               <StyledView className="relative px-7 space-y-1.5">
                 <StyledImage
-                  source={Images.pinesTreeLogo}
+                  source={Images.treeLogo}
                   className="w-9 h-9"
                 />
                 <StyledText className="text-white font-bold">
-                  Pines UI
+                  Perdil UI
                 </StyledText>
                 <StyledText className="text-white text-sm opacity-60">
                   An Alpine and Tailwind UI library
@@ -68,7 +68,7 @@ const NavigationMenuView = () => {
               }
             />
             <NavigationMenuItem
-              title={'Pines UI'}
+              title={'Perdil UI'}
               description={
                 'An Alpine JS and Tailwind CSS UI library for awesome people.'
               }

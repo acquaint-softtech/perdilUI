@@ -6,19 +6,19 @@ const AccordionView = () => {
   return (
     <Accordion>
       <AccordionItem
-        heading={'What is Pines?'}
-        content={'Pines is a UI library built for AlpineJS and TailwindCSS.'}
+        heading={'What is Perdil UI Kit?'}
+        content={'Perdil UI Kit is a UI library built for React Native using TailwindCSS.'}
       />
       <AccordionItem
-        heading={'How do I install Pines?'}
+        heading={'How do I install Perdil UI Kit?'}
         content={
-          'Add AlpineJS and TailwindCSS to your page and then copy and paste any of these elements into your project.'
+          'Add Perdil UI Kit library and then use any of the elements into your project.'
         }
       />
       <AccordionItem
-        heading={'Can I use Pines with other libraries or frameworks?'}
+        heading={'Can I use Perdil UI Kit with other libraries?'}
         content={
-          'Absolutely! Pines works with any other library or framework. Pines works especially well with the TALL stack.'
+          'Absolutely! Perdil UI Kit works with any other library.'
         }
       />
     </Accordion>

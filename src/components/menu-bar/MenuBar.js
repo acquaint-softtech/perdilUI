@@ -30,7 +30,7 @@ const MenuBar = ({children, containerWidth}) => {
   );
 
   return (
-    <StyledView className={styles.container}>
+    <StyledView>
       <StyledView className={styles.headerContainer}>
         <StyledView className={`${styles.header} w-[${containerWidth}px]`}>
           <StyledView className={styles.headerTitleContainer}>
@@ -60,7 +60,6 @@ const MenuBar = ({children, containerWidth}) => {
 };
 
 const styles = {
-  container: 'relative top-0 left-0 z-50 h-full',
   headerContainer: 'relative top-0 left-0 z-40 w-full h-10',
   header: 'h-full p-1 bg-white border rounded-md border-neutral-200/80',
   headerTitleContainer: 'flex-row justify-between h-full',

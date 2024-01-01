@@ -23,26 +23,6 @@ const FullScreenModalView = () => {
           Close
         </StyledText>
       </StyledTouchableOpacity>
-      <StyledView className="absolute top-0 bottom-0 right-0 flex-shrink-0 w-full overflow-hidden">
-        <StyledView className="absolute top-[220px] left-0 z-30 inline-flex flex-row items-end mb-4 ml-3 bg-transparent group">
-          <StyledImage
-            source={Images.pines}
-            resizeMode="contain"
-            className="w-10 h-4"
-          />
-          <StyledView className="flex flex-row opacity-90 items-center px-1 ml-2 -translate-x-px leading-none border-[2px] rounded border-white -translate-y-px">
-            <StyledText className="font-bold text-[8px] font-sans text-white">
-              UI
-            </StyledText>
-          </StyledView>
-        </StyledView>
-        <StyledView className="absolute inset-0 z-20 w-full h-full opacity-70 bg-gradient-to-t from-black" />
-        <StyledImage
-          source={Images.pinesBackground}
-          resizeMode="cover"
-          className="z-10 w-full h-60 opacity-75"
-        />
-      </StyledView>
       <StyledView className="relative flex flex-wrap items-center justify-center w-full h-full px-8">
         <StyledView className="relative w-full max-w-sm mx-auto">
           <StyledView className="relative">

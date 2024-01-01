@@ -148,84 +148,92 @@ const DatePicker = ({title = 'Select Date', onSelectDate}) => {
   };
 
   return (
-    <StyledView>
-      <StyledView>
-        <StyledText className={styles.title}>{title}</StyledText>
+    <>
+      {showDatePicker && (
         <StyledPressable
           onPress={() => setShowDatePicker(!showDatePicker)}
-          className={styles.datepickerInput}>
-          <StyledText className={styles.date}>
-            {`${selectedDate?.toLocaleString('default', {
-              month: 'short',
-            })} ${selectedDate?.getDate()}, ${selectedDate?.toLocaleString(
-              'default',
-              {year: 'numeric'},
-            )}`}
-          </StyledText>
-          <StyledImage
-            source={Images.datePicker}
-            className={styles.datepickerLogo}
-          />
-        </StyledPressable>
-      </StyledView>
-      <StyledView className={styles.datepickerContainer}>
-        {showDatePicker && (
-          <StyledView className={styles.datepicker}>
-            {renderHeader()}
-            {renderDays()}
-            <StyledView>
-              {renderCalendar().map((week, i) => (
-                <StyledView key={i} className={styles.week}>
-                  {week.map((date, index) => (
-                    <StyledTouchableOpacity
-                      key={index}
-                      className={styles.dayContainer}
-                      onPress={() => onDayPress(date)}
-                      disabled={!date}>
-                      <StyledView
-                        className={`${styles.dateContainer} ${
-                          currentDate?.getDate() === date &&
-                          currentDate?.getMonth() ===
-                            currentMonth?.getMonth() &&
-                          currentDate?.getFullYear() ===
-                            currentMonth?.getFullYear() &&
-                          'bg-neutral-200'
-                        } ${
-                          selectedDate?.getDate() === date &&
-                          selectedDate?.getMonth() ===
-                            currentMonth?.getMonth() &&
-                          selectedDate?.getFullYear() ===
-                            currentMonth?.getFullYear() &&
-                          'bg-neutral-800'
-                        }`}>
-                        <StyledText
-                          className={`${styles.dayText} ${
+          className='absolute opacity-50 top-0 left-0 bottom-0 right-0'
+        />
+      )}
+      <StyledView>
+        <StyledView>
+          <StyledText className={styles.title}>{title}</StyledText>
+          <StyledPressable
+            onPress={() => setShowDatePicker(!showDatePicker)}
+            className={styles.datepickerInput}>
+            <StyledText className={styles.date}>
+              {`${selectedDate?.toLocaleString('default', {
+                month: 'short',
+              })} ${selectedDate?.getDate()}, ${selectedDate?.toLocaleString(
+                'default',
+                {year: 'numeric'},
+              )}`}
+            </StyledText>
+            <StyledImage
+              source={Images.datePicker}
+              className={styles.datepickerLogo}
+            />
+          </StyledPressable>
+        </StyledView>
+        <StyledView className={styles.datepickerContainer}>
+          {showDatePicker && (
+            <StyledView className={styles.datepicker}>
+              {renderHeader()}
+              {renderDays()}
+              <StyledView>
+                {renderCalendar().map((week, i) => (
+                  <StyledView key={i} className={styles.week}>
+                    {week.map((date, index) => (
+                      <StyledTouchableOpacity
+                        key={index}
+                        className={styles.dayContainer}
+                        onPress={() => onDayPress(date)}
+                        disabled={!date}>
+                        <StyledView
+                          className={`${styles.dateContainer} ${
                             currentDate?.getDate() === date &&
                             currentDate?.getMonth() ===
                               currentMonth?.getMonth() &&
                             currentDate?.getFullYear() ===
                               currentMonth?.getFullYear() &&
-                            'text-black'
+                            'bg-neutral-200'
                           } ${
                             selectedDate?.getDate() === date &&
                             selectedDate?.getMonth() ===
                               currentMonth?.getMonth() &&
                             selectedDate?.getFullYear() ===
                               currentMonth?.getFullYear() &&
-                            'text-white'
+                            'bg-neutral-800'
                           }`}>
-                          {date.toString()}
-                        </StyledText>
-                      </StyledView>
-                    </StyledTouchableOpacity>
-                  ))}
-                </StyledView>
-              ))}
+                          <StyledText
+                            className={`${styles.dayText} ${
+                              currentDate?.getDate() === date &&
+                              currentDate?.getMonth() ===
+                                currentMonth?.getMonth() &&
+                              currentDate?.getFullYear() ===
+                                currentMonth?.getFullYear() &&
+                              'text-black'
+                            } ${
+                              selectedDate?.getDate() === date &&
+                              selectedDate?.getMonth() ===
+                                currentMonth?.getMonth() &&
+                              selectedDate?.getFullYear() ===
+                                currentMonth?.getFullYear() &&
+                              'text-white'
+                            }`}>
+                            {date.toString()}
+                          </StyledText>
+                        </StyledView>
+                      </StyledTouchableOpacity>
+                    ))}
+                  </StyledView>
+                ))}
+              </StyledView>
             </StyledView>
-          </StyledView>
-        )}
+          )}
+        </StyledView>
       </StyledView>
-    </StyledView>
+    </>
   );
 };
 
@@ -237,7 +245,7 @@ const styles = {
   datepickerLogo: 'w-6 h-6 opacity-40',
   datepickerContainer: 'w-full',
   datepicker:
-    'absolute z-50 top-1 p-4 bg-white border rounded-lg shadow border-neutral-200 w-full',
+    'absolute top-1 p-4 bg-white border rounded-lg shadow border-neutral-200 w-full',
   header: 'flex-row justify-between items-center mb-2',
   monthAndYearContainer: 'flex-row items-center space-x-1',
   month: 'text-lg font-bold text-gray-800',
