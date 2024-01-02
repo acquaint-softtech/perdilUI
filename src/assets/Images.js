@@ -24,6 +24,7 @@ const Images = {
   message: require('./message.png'),
   more: require('./more.png'),
   githubBlackBg: require('./github-black-bg.png'),
+  fullScreenModalBackground: require('./full-screen-modal-background.png'),
   dot: require('./dot.png'),
   dropdown: require('./dropdown.png'),
   hoverCardCalender: require('./hover-card-calender.png'),

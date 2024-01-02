@@ -12,7 +12,7 @@ import SlideOver from './SlideOver';
 const SlideOverView = () => {
   const [slideoverVisible, setSlideoverVisible] = useState(false);
   const SlideOverChild = (
-    <StyledView className="flex-1 h-full">
+    <StyledSafeAreaView className="flex-1 h-full">
       <StyledView className="flex-row items-center justify-between m-4">
         <StyledText className="text-base font-semibold leading-6 text-gray-900">
           Slide Over Title
@@ -27,7 +27,7 @@ const SlideOverView = () => {
         </StyledTouchableOpacity>
       </StyledView>
       <StyledView className="flex-1 m-4 mt-0 overflow-hidden border border-dashed rounded-md border-neutral-300" />
-    </StyledView>
+    </StyledSafeAreaView>
   );
 
   return (
