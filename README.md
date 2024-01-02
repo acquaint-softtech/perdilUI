@@ -2,9 +2,9 @@
 
 Perdil UI Kit is a React Native UI Library that allows you to create stunning multi-brand cross-platform mobile applications. The library brings consistency and scalability in the design and development process.
 
-![Perdil UI Material](https://github-production-user-asset-6210df.s3.amazonaws.com/151928190/293694532-be66beb0-5d83-4548-92c7-46d3aaf4acce.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240102%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240102T124304Z&X-Amz-Expires=300&X-Amz-Signature=eee02d48f6420e826883cd0081f0506c128dc1427c01ecd59fd78c1aa7dc9aef&X-Amz-SignedHeaders=host&actor_id=151928190&key_id=0&repo_id=76937669)
+![Perdil UI Material](./images/perdil-ui-material.jpg)
 
-![Perdil UI Material GIF](https://github.com/akveo/react-native-ui-kitten/assets/151928190/18679229-1abd-43ec-9cf4-f197e62a8ad5)
+![Perdil UI Material GIF](./images/perdil-ui-material.gif)
 
 ## What's included
 - 20+ general-purpose components designed and tested to save your time.
