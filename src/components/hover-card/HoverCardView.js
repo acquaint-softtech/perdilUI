@@ -40,10 +40,12 @@ const HoverCardView = () => {
   );
 
   return (
-    <StyledSafeAreaView className="h-full items-center justify-center">
-      <HoverCard visible={showHoverCard} cardComponent={Card}>
-        <StyledTouchableOpacity
-          onPress={() => setShowHoverCard(!showHoverCard)}>
+    <StyledSafeAreaView className="flex-1 items-center justify-center">
+      <HoverCard
+        visible={showHoverCard}
+        cardComponent={Card}
+        onDismiss={() => setShowHoverCard(false)}>
+        <StyledTouchableOpacity onPress={() => setShowHoverCard(!showHoverCard)}>
           <StyledText
             className={`${
               showHoverCard && 'underline'

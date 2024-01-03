@@ -4,7 +4,7 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
 
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyledImage,
   StyledText,
@@ -30,16 +30,12 @@ const ContextMenuItem = ({
   ...contextMenuSectionProps
 }) => {
   const [selectedItem, setSelectedItem] = useState(defaultSelected || false);
-  const [size, setSize] = useState({
-    height: 0,
-    width: 0,
-  });
 
   const onPress = e => {
     if (onPressItem) {
       onPressItem({...e, title: title});
     }
-    if (innerMenu) {
+    if (contextMenuSectionProps?.setInnerMenuVisible) {
       contextMenuSectionProps?.setInnerMenuVisible(
         contextMenuSectionProps?.innerMenuVisible === title ? null : title,
       );
@@ -55,55 +51,59 @@ const ContextMenuItem = ({
   };
 
   return (
-    <StyledTouchableOpacity
-      activeOpacity={0.5}
-      onPress={onPress}
-      disabled={disabled}
-      onLayout={e =>
-        setSize({
-          height: e.nativeEvent.layout.height,
-          width: e.nativeEvent.layout.width,
-        })
-      }
+    <StyledView
       className={`${styles.contextMenuItemContainer} ${containerClass} ${
         disabled && 'opacity-50'
       }`}>
-      <>
-        {contextMenuSectionProps?.multipleSelection
-          ? contextMenuSectionProps?.selection &&
-            selectedItem && (
-              <StyledImage source={Images.right} className={styles.rightIcon} />
-            )
-          : contextMenuSectionProps?.selection &&
-            contextMenuSectionProps?.selected === title && (
-              <StyledImage source={Images.dot} className={styles.dotIcon} />
+      <StyledTouchableOpacity
+        activeOpacity={0.5}
+        onPress={onPress}
+        disabled={disabled}
+        className={styles.contextMenuItemButton}>
+        <>
+          {contextMenuSectionProps?.multipleSelection
+            ? contextMenuSectionProps?.selection &&
+              selectedItem && (
+                <StyledImage
+                  source={Images.right}
+                  className={styles.rightIcon}
+                />
+              )
+            : contextMenuSectionProps?.selection &&
+              contextMenuSectionProps?.selected === title && (
+                <StyledImage source={Images.dot} className={styles.dotIcon} />
+              )}
+          <StyledText className={`${styles.contextMenuItemTitle} ${titleClassName}`}>
+            {title}
+          </StyledText>
+        </>
+        {React.isValidElement(rightIcon)
+          ? rightIcon
+          : rightIcon && (
+              <StyledImage source={rightIcon} className={styles.icon} />
             )}
-        <StyledText
-          className={`${styles.contextMenuItemTitle} ${titleClassName}`}>
-          {title}
-        </StyledText>
-      </>
-      {rightSideIcon && rightSideIcon}
-      {contextMenuSectionProps?.innerMenuVisible === title && (
-        <StyledView
-          className={`${styles.innerMenuContainer} w-[${size?.width}px] left-[${
-            contextMenuSectionProps?.width || size?.width
-          }px]`}>
-          {innerMenu}
-        </StyledView>
-      )}
-    </StyledTouchableOpacity>
+      </StyledTouchableOpacity>
+      <StyledView>
+        {contextMenuSectionProps?.innerMenuVisible === title && (
+          <StyledView className={styles.innerMenuContainer}>
+            {innerMenu}
+          </StyledView>
+        )}
+      </StyledView>
+    </StyledView>
   );
 };
 
 const styles = {
-  contextMenuItemContainer:
-    'flex-row items-center justify-between rounded px-2 py-1.5 pl-8',
+  contextMenuItemContainer: 'flex-row visible',
+  contextMenuItemButton:
+    'flex-row items-center justify-between p-2 pl-8 w-full',
   contextMenuItemTitle: 'text-black',
   rightIcon: 'absolute left-2 flex h-3.5 w-3.5 items-center justify-center',
   dotIcon: 'absolute left-2 flex h-2 w-2 items-center justify-center',
+  icon: 'w-4 h-4',
   innerMenuContainer:
-    'absolute z-50 min-w-[8rem] text-neutral-800 rounded-md border border-neutral-200/70 bg-white text-base shadow-md top-0',
+    'absolute -translate-x-1 z-[9999] min-w-[8rem] text-neutral-800 rounded-md border border-neutral-200/70 bg-white shadow-md top-0 left-0',
 };
 
 export default ContextMenuItem;

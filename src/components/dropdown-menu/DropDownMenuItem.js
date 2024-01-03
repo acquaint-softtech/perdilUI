@@ -25,70 +25,62 @@ const DropDownMenuItem = ({
   titleClassName = '',
   disabled = false,
   innerMenu,
+  pressable = true,
   ...dropdownSectionProps
 }) => {
-  const [size, setSize] = useState({
-    height: 0,
-    width: 0,
-  });
-
   const handlePress = e => {
-    if (innerMenu) {
+    if (onPress) {
+      onPress({...e, title: title});
+    }
+    if (dropdownSectionProps?.setInnerMenuVisible) {
       dropdownSectionProps?.setInnerMenuVisible(
         dropdownSectionProps?.innerMenuVisible === title ? null : title,
       );
     }
-    if (onPress) {
-      onPress(e);
-    }
   };
 
   return (
-    <StyledTouchableOpacity
-      onPress={handlePress}
-      disabled={disabled}
-      onLayout={e =>
-        setSize({
-          height: Math.round(e.nativeEvent.layout.height).toString(),
-          width: Math.round(e.nativeEvent.layout.width).toString(),
-        })
-      }
-      className={`${styles.container} ${disabled && 'opacity-50'}`}>
-      <StyledView className={styles.leftIconContainer}>
-        {React.isValidElement(leftIcon)
-          ? leftIcon
-          : leftIcon && (
-              <StyledImage source={leftIcon} className={styles.icon} />
-            )}
-        <StyledText className={`${styles.title} ${titleClassName}`}>
-          {title}
-        </StyledText>
-      </StyledView>
-      {React.isValidElement(rightIcon)
+    <StyledView className={`${styles.dropdownMenuItemContainer} ${disabled && 'opacity-50'}`}>
+      <StyledTouchableOpacity
+        onPress={handlePress}
+        disabled={!pressable || disabled}
+        className={styles.dropdownMenuItemButton}>
+        <StyledView className={styles.leftIconContainer}>
+          {React.isValidElement(leftIcon)
+            ? leftIcon
+            : leftIcon && (
+                <StyledImage source={leftIcon} className={styles.icon} />
+              )}
+          <StyledText className={`${styles.title} ${titleClassName}`}>
+            {title}
+          </StyledText>
+        </StyledView>
+        {React.isValidElement(rightIcon)
           ? rightIcon
           : rightIcon && (
               <StyledImage source={rightIcon} className={styles.icon} />
             )}
-      {dropdownSectionProps?.innerMenuVisible === title && (
-        <StyledView
-          className={`${styles.innerMenuContainer} w-[${size?.width}px] left-[${
-            dropdownSectionProps?.width || size?.width
-          }px] top-0 `}>
-          {innerMenu}
-        </StyledView>
-      )}
-    </StyledTouchableOpacity>
+      </StyledTouchableOpacity>
+      <StyledView>
+        {dropdownSectionProps?.innerMenuVisible === title && (
+          <StyledView className={styles.innerMenuContainer}>
+            {innerMenu}
+          </StyledView>
+        )}
+      </StyledView>
+    </StyledView>
   );
 };
 
 const styles = {
-  container:
-    'flex-row justify-between cursor-default items-center rounded px-2 py-1.5 text-sm outline-none transition-colors',
+  dropdownMenuItemContainer: 'flex-row visible',
+  dropdownMenuItemButton:
+    'flex-row visible justify-between items-center rounded px-2 py-1.5 w-full',
   leftIconContainer: 'flex-row items-center space-x-2 px-2',
   title: 'text-neutral-700 text-base',
-  innerMenuContainer:
-    'absolute z-50 text-neutral-800 rounded-md border border-neutral-200/70 bg-white text-base shadow-md',
   icon: 'w-4 h-4',
+  innerMenuContainer:
+    'absolute -translate-x-1 z-[9999] min-w-[8rem] text-neutral-800 rounded-md border border-neutral-200/70 bg-white shadow-md top-0 left-0',
 };
 
 export default DropDownMenuItem;

@@ -27,11 +27,16 @@ const ContextMenu = ({children, visible, cordinates, width}) => {
     React.cloneElement(child, {width, innerMenuVisible, setInnerMenuVisible}),
   );
 
+  const onBackdropPress = () => {
+    setContextMenuVisible(false);
+    setInnerMenuVisible('');
+  };
+
   return (
     contextMenuVisible && (
       <>
         <StyledPressable
-          onPress={() => setContextMenuVisible(false)}
+          onPress={onBackdropPress}
           className="absolute h-full w-full"
         />
         <StyledSafeAreaView
@@ -45,7 +50,7 @@ const ContextMenu = ({children, visible, cordinates, width}) => {
 
 const styles = {
   contextMenuContainer:
-    'absolute z-50 min-w-[8rem] text-neutral-800 rounded-md border border-neutral-200/70 bg-white text-base shadow-md w-64',
+    'absolute z-[999] min-w-[8rem] text-neutral-800 rounded-md border border-neutral-200/70 bg-white text-base shadow-md w-64',
 };
 
 export default ContextMenu;

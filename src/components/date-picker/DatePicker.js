@@ -4,7 +4,7 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
 
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyledImage,
   StyledPressable,
@@ -13,15 +13,22 @@ import {
   StyledView,
 } from '../../StyledComponentsContstants';
 import Images from '../../assets/Images';
+import { Platform } from 'react-native';
 
 /**
  * This component can be used to select a date.
  */
 
-const DatePicker = ({title = 'Select Date', onSelectDate}) => {
+const DatePicker = ({
+  title = 'Select Date',
+  onSelectDate,
+  datePickerInput,
+  onDismiss,
+  visible = false,
+}) => {
   const currentDate = new Date();
 
-  const [showDatePicker, setShowDatePicker] = useState(false);
+  // const [showDatePicker, setShowDatePicker] = useState(false);
   const [selectedDate, setSelectedDate] = useState(currentDate);
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
@@ -144,94 +151,74 @@ const DatePicker = ({title = 'Select Date', onSelectDate}) => {
     }
 
     setSelectedDate(d);
-    setShowDatePicker(false);
+    onDismiss();
   };
 
   return (
     <>
-      {showDatePicker && (
+      {datePickerInput}
+      {visible && (
         <StyledPressable
-          onPress={() => setShowDatePicker(!showDatePicker)}
-          className='absolute opacity-50 top-0 left-0 bottom-0 right-0'
+          onPress={onDismiss}
+          className="absolute bg-black opacity-50 top-0 left-0 bottom-0 right-0 z-[9999]"
         />
       )}
-      <StyledView>
-        <StyledView>
-          <StyledText className={styles.title}>{title}</StyledText>
-          <StyledPressable
-            onPress={() => setShowDatePicker(!showDatePicker)}
-            className={styles.datepickerInput}>
-            <StyledText className={styles.date}>
-              {`${selectedDate?.toLocaleString('default', {
-                month: 'short',
-              })} ${selectedDate?.getDate()}, ${selectedDate?.toLocaleString(
-                'default',
-                {year: 'numeric'},
-              )}`}
-            </StyledText>
-            <StyledImage
-              source={Images.datePicker}
-              className={styles.datepickerLogo}
-            />
-          </StyledPressable>
-        </StyledView>
-        <StyledView className={styles.datepickerContainer}>
-          {showDatePicker && (
-            <StyledView className={styles.datepicker}>
-              {renderHeader()}
-              {renderDays()}
-              <StyledView>
-                {renderCalendar().map((week, i) => (
-                  <StyledView key={i} className={styles.week}>
-                    {week.map((date, index) => (
-                      <StyledTouchableOpacity
-                        key={index}
-                        className={styles.dayContainer}
-                        onPress={() => onDayPress(date)}
-                        disabled={!date}>
-                        <StyledView
-                          className={`${styles.dateContainer} ${
+      <StyledView className={styles.datepickerContainer}>
+        {visible && (
+          <StyledView className={styles.datepicker}>
+            {renderHeader()}
+            {renderDays()}
+            <StyledView>
+              {renderCalendar().map((week, i) => (
+                <StyledView key={i} className={styles.week}>
+                  {week.map((date, index) => (
+                    <StyledTouchableOpacity
+                      key={index}
+                      className={styles.dayContainer}
+                      onPress={() => onDayPress(date)}
+                      disabled={!date}>
+                      <StyledView
+                        className={`${styles.dateContainer} ${
+                          currentDate?.getDate() === date &&
+                          currentDate?.getMonth() ===
+                            currentMonth?.getMonth() &&
+                          currentDate?.getFullYear() ===
+                            currentMonth?.getFullYear() &&
+                          'bg-neutral-200'
+                        } ${
+                          selectedDate?.getDate() === date &&
+                          selectedDate?.getMonth() ===
+                            currentMonth?.getMonth() &&
+                          selectedDate?.getFullYear() ===
+                            currentMonth?.getFullYear() &&
+                          'bg-neutral-800'
+                        }`}>
+                        <StyledText
+                          className={`${styles.dayText} ${
                             currentDate?.getDate() === date &&
                             currentDate?.getMonth() ===
                               currentMonth?.getMonth() &&
                             currentDate?.getFullYear() ===
                               currentMonth?.getFullYear() &&
-                            'bg-neutral-200'
+                            'text-black'
                           } ${
                             selectedDate?.getDate() === date &&
                             selectedDate?.getMonth() ===
                               currentMonth?.getMonth() &&
                             selectedDate?.getFullYear() ===
                               currentMonth?.getFullYear() &&
-                            'bg-neutral-800'
+                            'text-white'
                           }`}>
-                          <StyledText
-                            className={`${styles.dayText} ${
-                              currentDate?.getDate() === date &&
-                              currentDate?.getMonth() ===
-                                currentMonth?.getMonth() &&
-                              currentDate?.getFullYear() ===
-                                currentMonth?.getFullYear() &&
-                              'text-black'
-                            } ${
-                              selectedDate?.getDate() === date &&
-                              selectedDate?.getMonth() ===
-                                currentMonth?.getMonth() &&
-                              selectedDate?.getFullYear() ===
-                                currentMonth?.getFullYear() &&
-                              'text-white'
-                            }`}>
-                            {date.toString()}
-                          </StyledText>
-                        </StyledView>
-                      </StyledTouchableOpacity>
-                    ))}
-                  </StyledView>
-                ))}
-              </StyledView>
+                          {date.toString()}
+                        </StyledText>
+                      </StyledView>
+                    </StyledTouchableOpacity>
+                  ))}
+                </StyledView>
+              ))}
             </StyledView>
-          )}
-        </StyledView>
+          </StyledView>
+        )}
       </StyledView>
     </>
   );
@@ -243,7 +230,7 @@ const styles = {
     'flex-row items-center justify-between w-full px-3 py-2 bg-white border rounded-md border-neutral-300',
   date: 'text-base text-neutral-600',
   datepickerLogo: 'w-6 h-6 opacity-40',
-  datepickerContainer: 'w-full',
+  datepickerContainer: Platform.OS === 'android' ? 'shadow' : 'z-[9999]',
   datepicker:
     'absolute top-1 p-4 bg-white border rounded-lg shadow border-neutral-200 w-full',
   header: 'flex-row justify-between items-center mb-2',
