@@ -32,7 +32,7 @@ const DropDownMenu = ({children, visible, dropdownButton, width, onDismiss}) => 
       {visible && (
         <StyledPressable
           onPress={onBackdropPress}
-          className="absolute bg-black opacity-50 h-full w-full"
+          className="absolute h-full w-full"
         />
       )}
       <StyledView className={Platform.OS === 'android' ? '-shadow' : '-z-[999]'}>

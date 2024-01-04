@@ -20,16 +20,14 @@ import { Platform } from 'react-native';
  */
 
 const DatePicker = ({
-  title = 'Select Date',
   onSelectDate,
   datePickerInput,
   onDismiss,
+  initialDate,
   visible = false,
 }) => {
   const currentDate = new Date();
-
-  // const [showDatePicker, setShowDatePicker] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(currentDate);
+  const [selectedDate, setSelectedDate] = useState(initialDate ?? currentDate);
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
   const renderHeader = () => {
@@ -73,6 +71,7 @@ const DatePicker = ({
       </StyledView>
     );
   };
+
   const getDaysInMonth = date => {
     const year = date.getFullYear();
     const month = date.getMonth();
@@ -84,6 +83,7 @@ const DatePicker = ({
     const month = date.getMonth();
     return new Date(year, month, 1).getDay();
   };
+
   const getLastDayOfMonth = date => {
     const year = date.getFullYear();
     const month = date.getMonth();
@@ -160,7 +160,7 @@ const DatePicker = ({
       {visible && (
         <StyledPressable
           onPress={onDismiss}
-          className="absolute bg-black opacity-50 top-0 left-0 bottom-0 right-0 z-[9999]"
+          className="absolute top-0 left-0 bottom-0 right-0 z-[9999]"
         />
       )}
       <StyledView className={styles.datepickerContainer}>
@@ -225,12 +225,7 @@ const DatePicker = ({
 };
 
 const styles = {
-  title: 'block mb-1 text-base font-medium text-neutral-500',
-  datepickerInput:
-    'flex-row items-center justify-between w-full px-3 py-2 bg-white border rounded-md border-neutral-300',
-  date: 'text-base text-neutral-600',
-  datepickerLogo: 'w-6 h-6 opacity-40',
-  datepickerContainer: Platform.OS === 'android' ? 'shadow' : 'z-[9999]',
+  datepickerContainer: `${Platform.OS === 'android' ? 'shadow' : 'z-[999999]'} items-center`,
   datepicker:
     'absolute top-1 p-4 bg-white border rounded-lg shadow border-neutral-200 w-full',
   header: 'flex-row justify-between items-center mb-2',

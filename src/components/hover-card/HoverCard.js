@@ -5,7 +5,8 @@
  */
 
 import React from 'react';
-import { StyledPressable, StyledView } from '../../StyledComponentsContstants';
+import {StyledPressable, StyledView} from '../../StyledComponentsContstants';
+import {Platform} from 'react-native';
 
 /**
  * This component can be used to display a hover card.
@@ -18,13 +19,13 @@ const HoverCard = ({visible, cardComponent, onDismiss, children}) => {
       {visible && (
         <StyledPressable
           onPress={onDismiss}
-          className="absolute h-full w-full"
+          className={`absolute bg-black opacity-50 h-full w-full ${
+            Platform.OS === 'android' ? 'shadow' : 'z-[9999]'
+          }`}
         />
       )}
-      <StyledView>
-        {children}
-      </StyledView>
-      <StyledView className='z-[9999]'>
+      {children}
+      <StyledView className={Platform.OS === 'android' ? 'shadow' : 'z-[9999]'}>
         {visible && (
           <StyledView className={styles.cardContainer}>
             {cardComponent}
@@ -36,8 +37,7 @@ const HoverCard = ({visible, cardComponent, onDismiss, children}) => {
 };
 
 const styles = {
-  container: 'w-full',
-  cardContainer: 'absolute self-center top-0 mt-2 z-[9999]',
+  cardContainer: 'absolute self-center top-0 mt-2',
 };
 
 export default HoverCard;

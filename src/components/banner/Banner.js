@@ -8,7 +8,6 @@ import React from 'react';
 import { Platform, UIManager } from 'react-native';
 import {
   StyledImage,
-  StyledSafeAreaView,
   StyledText,
   StyledTouchableOpacity,
   StyledView,
@@ -35,9 +34,8 @@ const Banner = ({
   onPressClose,
 }) => {
   return (
-    <StyledSafeAreaView
-      className={`${!visible && 'hidden'} ${styles.container}`}>
-      <StyledView className={styles.bannerContainer}>
+    visible && (
+      <StyledView className={styles.container}>
         <StyledTouchableOpacity
           onPress={onPressBanner}
           className={styles.bannerButton}>
@@ -62,15 +60,14 @@ const Banner = ({
           <StyledImage source={Images.cancel} className={styles.cancelImage} />
         </StyledTouchableOpacity>
       </StyledView>
-    </StyledSafeAreaView>
+    )
   );
 };
 
 const styles = {
-  container:
-    'z-50 absolute fixed top-0 left-0 w-full h-auto duration-300 ease-out shadow-sm',
-  bannerContainer:
-    'flex flex-row w-full items-center bg-white justify-between p-3 mx-auto',
+  container: `absolute top-0 w-full flex-row items-center bg-white shadow-sm justify-between p-3 ${
+    Platform.OS === 'ios' && 'z-[99999] top-10'
+  }`,
   bannerButton: 'text-black',
   bannerHeadingContainer: 'flex flex-row items-center space-x-1',
   bannerHeadingImage: 'w-4 h-4 mr-1',

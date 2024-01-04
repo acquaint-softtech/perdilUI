@@ -4,8 +4,8 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
 
-import React, { useState } from 'react';
-import { Dimensions, ScrollView } from 'react-native';
+import React, {useState} from 'react';
+import {Dimensions, ScrollView} from 'react-native';
 import {
   StyledFlatList,
   StyledImage,
@@ -43,7 +43,7 @@ const ImageGallery = ({images = []}) => {
   };
 
   return (
-    <StyledSafeAreaView className={`${styles.container}`}>
+    <StyledSafeAreaView className={styles.container}>
       <StyledView>
         <StyledFlatList
           data={images}
@@ -61,8 +61,11 @@ const ImageGallery = ({images = []}) => {
         transparent={true}
         onDismiss={() => setModalVisible(false)}
         className={styles.modal}>
-        <StyledView className={styles.overlay} />
-        <ScrollView pagingEnabled horizontal>
+        <StyledView className={'flex-1 justify-center'}>
+          <StyledView
+            onPress={() => setModalVisible(false)}
+            className={styles.overlay}
+          />
           {images.map((image, index) => {
             return (
               openedImageIndex === index && (
@@ -84,7 +87,7 @@ const ImageGallery = ({images = []}) => {
                   </StyledTouchableOpacity>
                   <StyledImage
                     source={{uri: image?.photo}}
-                    resizeMode="center"
+                    resizeMode="contain"
                     className={styles.image}
                   />
                   <StyledTouchableOpacity
@@ -103,23 +106,23 @@ const ImageGallery = ({images = []}) => {
               )
             );
           })}
-        </ScrollView>
+        </StyledView>
       </StyledModal>
     </StyledSafeAreaView>
   );
 };
 
 const styles = {
-  container: 'w-full h-full justify-center items-center',
+  container: 'w-full justify-center items-center',
   modal: 'h-full justify-center items-center',
-  overlay: 'absolute top-0 bottom-0 left-0 right-0 bg-black opacity-90',
-  imageContainer: 'w-screen h-screen',
+  overlay: 'absolute h-full w-full bg-black opacity-90',
+  imageContainer: 'flex-1 w-full justify-center',
   leftArrowButton:
-    'z-50 absolute h-10 w-10 bg-gray-400 opacity-50 rounded-full items-center justify-center left-8 inset-y-1/2',
+    'z-50 absolute h-10 w-10 bg-gray-400 opacity-50 rounded-full items-center justify-center left-8',
   leftArrowIcon: 'w-5 h-5',
-  image: 'h-full mx-6',
+  image: 'flex-1 mx-6',
   rightArrowButton:
-    'z-50 absolute h-10 w-10 bg-gray-400 opacity-50 rounded-full items-center justify-center right-8 inset-y-1/2',
+    'z-50 absolute h-10 w-10 bg-gray-400 opacity-50 rounded-full items-center justify-center right-8',
   previewImage:
     'flex select-none h-[170px] bg-gray-200 rounded mx-[5px] aspect-[5/7]',
 };

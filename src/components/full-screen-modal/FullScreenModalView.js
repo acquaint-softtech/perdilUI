@@ -26,7 +26,7 @@ const FullScreenModalView = () => {
       <StyledView className="absolute top-0 bottom-0 right-0 flex-shrink-0 w-full overflow-hidden">
         <StyledView className="absolute inset-0 z-20 w-full h-full opacity-70 bg-gradient-to-t from-black" />
         <StyledImage
-          source={Images.pinesBackground}
+          source={Images.fullScreenModalBackground}
           resizeMode="cover"
           className="z-10 w-full h-52 opacity-75"
         />

@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import MonacoEditor from './MonacoEditor';
+import { StyledSafeAreaView } from 'perdil-ui/src/StyledComponentsContstants';
 
 const MonacoEditorView = () => {
   const [content, setContent] = useState('');
 
   return (
-    <MonacoEditor
-      height={100}
-      value={content}
-      onChangeText={text => setContent(text)}
-    />
+    <StyledSafeAreaView className='flex-1'>
+      <MonacoEditor value={content} onChangeText={text => setContent(text)} />
+    </StyledSafeAreaView>
   );
 };
 

@@ -77,10 +77,10 @@ const ContextMenuItem = ({
             {title}
           </StyledText>
         </>
-        {React.isValidElement(rightIcon)
-          ? rightIcon
-          : rightIcon && (
-              <StyledImage source={rightIcon} className={styles.icon} />
+        {React.isValidElement(rightSideIcon)
+          ? rightSideIcon
+          : rightSideIcon && (
+              <StyledImage source={rightSideIcon} className={styles.icon} />
             )}
       </StyledTouchableOpacity>
       <StyledView>
