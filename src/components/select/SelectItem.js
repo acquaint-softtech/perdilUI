@@ -35,8 +35,7 @@ const SelectItem = ({title = 'Select Item Title', ...selectProps}) => {
 };
 
 const styles = {
-  selectItemContainer:
-    'relative flex-row items-center py-2 pl-8 text-gray-700 cursor-default select-none data-[disabled]:opacity-50 data-[disabled]:pointer-events-none',
+  selectItemContainer: 'flex-row items-center py-2 pl-8 text-gray-700',
   selectItemTitle: 'block text-base text-black truncate',
   tickLogo: 'absolute left-0 w-4 h-4 ml-2 opacity-40',
 };

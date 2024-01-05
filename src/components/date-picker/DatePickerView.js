@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { StyledImage, StyledPressable, StyledSafeAreaView, StyledText, StyledView } from '../../StyledComponentsContstants';
+import {
+  StyledImage,
+  StyledPressable,
+  StyledSafeAreaView,
+  StyledText,
+  StyledView,
+} from '../../StyledComponentsContstants';
 import DatePicker from './DatePicker';
 import Images from '../../assets/Images';
 
@@ -32,7 +38,7 @@ const DatePickerView = () => {
   );
 
   return (
-    <StyledSafeAreaView className="flex-1 items-center justify-center mx-2">
+    <StyledSafeAreaView className="flex-1 items-center justify-center m-2">
       <DatePicker
         onSelectDate={d => setDate(d)}
         visible={showDatePicker}

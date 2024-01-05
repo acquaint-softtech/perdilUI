@@ -35,11 +35,11 @@ const DropDownMenu = ({children, visible, dropdownButton, width, onDismiss}) => 
           className="absolute h-full w-full"
         />
       )}
-      <StyledView className={Platform.OS === 'android' ? '-shadow' : '-z-[999]'}>
+      <StyledView className={Platform.OS === 'android' ? '-shadow' : '-z-[9999]'}>
         {dropdownButton}
       </StyledView>
       {visible && (
-        <StyledView>
+        <StyledView className={Platform.OS === 'android' ? 'shadow' : 'z-[9999]'}>
           <StyledView className={`${styles.dropdownMenu} w-[${width}px]`}>
             {childrenWithProps}
           </StyledView>
@@ -51,7 +51,7 @@ const DropDownMenu = ({children, visible, dropdownButton, width, onDismiss}) => 
 
 const styles = {
   dropdownMenu:
-    'absolute z-[999] min-w-[8rem] self-center top-0 z-50 mt-1 bg-white border border-neutral-300 rounded-md shadow-md w-60',
+    'absolute min-w-[8rem] self-center top-0 z-50 mt-1 bg-white border border-neutral-300 rounded-md shadow-md w-60',
 };
 
 export default DropDownMenu;

@@ -10,6 +10,7 @@ import {
   StyledText,
   StyledView,
 } from '../../StyledComponentsContstants';
+import { Platform } from 'react-native';
 
 /**
  * Simple tooltip component that can be used to show additional information on tap (hover cannot works).
@@ -75,7 +76,9 @@ const Tooltip = ({
 };
 
 const styles = {
-  container: 'items-center',
+  container: `items-center ${
+    Platform.OS === 'android' ? 'shadow' : 'z-[9999]'
+  }`,
   tooltipContainer: 'z-50 px-2 py-1 bg-black rounded bg-opacity-50 absolute',
   tooltipContainerForTop: 'bottom-1',
   tooltipContainerForLeft: 'right-1',

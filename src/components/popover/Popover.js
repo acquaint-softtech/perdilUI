@@ -6,6 +6,7 @@
 
 import React from 'react';
 import { StyledText, StyledView } from '../../StyledComponentsContstants';
+import { Platform } from 'react-native';
 
 /**
  * A popover component wrapper that can wrap and display rich content in a portal, triggered by a button.
@@ -23,7 +24,7 @@ const Popover = ({
     return (
       <>
         <StyledView
-          className={`${styles.container} ${
+          className={`${styles.indicator} ${
             position === 'top'
               ? styles.topContainer
               : position === 'bottom'
@@ -32,7 +33,7 @@ const Popover = ({
           }`}
         />
         <StyledView
-          className={`${styles.indicator} ${
+          className={`${styles.container} ${
             position === 'top'
               ? styles.indicatorForTop
               : position === 'bottom'
@@ -56,7 +57,10 @@ const Popover = ({
   };
 
   return (
-    <>
+    <StyledView
+      className={`items-center ${
+        Platform.OS === 'android' ? 'shadow' : 'z-[9999]'
+      }`}>
       {position === 'top' && (
         <StyledView className="items-center">
           {visible && renderPopOver()}
@@ -68,17 +72,17 @@ const Popover = ({
           {visible && renderPopOver()}
         </StyledView>
       )}
-    </>
+    </StyledView>
   );
 };
 
 const styles = {
-  container:
+  indicator:
     'absolute z-50 w-2.5 h-2.5 origin-bottom-left rotate-45 bg-white border-neutral-200/70 rounded-sm',
   topContainer: 'bottom-1 border-b border-r',
   bottomContainer: 'top-1 border-t border-l',
-  indicator:
-    'absolute z-40 items-center space-y-2 bg-white w-[${width}px] p-4 border rounded-md shadow-sm border-neutral-200/70',
+  container:
+    'absolute flex-1 z-40 items-center space-y-2 bg-white p-4 border rounded-md shadow-sm border-neutral-200/70',
   indicatorForTop: 'bottom-0 mb-2',
   indicatorForBottom: 'top-0 mt-2',
   popoverContainer: 'w-full space-y-2',

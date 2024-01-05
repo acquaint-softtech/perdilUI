@@ -15,7 +15,7 @@ const ContextMenuView = () => {
   const [cordinates, setCordinates] = useState({x: 0, y: 0});
 
   return (
-    <StyledSafeAreaView className="h-full items-center justify-center">
+    <StyledSafeAreaView className="flex-1 items-center justify-center">
       <StyledPressable
         className={
           'z-50 h-[150px] w-[300px] text-base items-center justify-center rounded-md border border-neutral-300 border-dashed text-neutral-800'

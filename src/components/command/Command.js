@@ -100,7 +100,7 @@ const Command = ({children}) => {
 };
 
 const styles = {
-  container: 'bg-white border border-gray-300 rounded-lg shadow-sm m-4',
+  container: 'bg-white border border-gray-300 rounded-lg shadow-sm',
   inputContainer: 'flex-row space-x-2 items-center h-11 border-gray-300 px-3',
   searchLogo: 'w-4 h-4 opacity-40',
   input: 'flex-1 text-base p-0 leading-4',

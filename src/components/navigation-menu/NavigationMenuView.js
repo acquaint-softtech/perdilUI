@@ -13,7 +13,7 @@ import NavigationMenuSection from './NavigationMenuSection';
 
 const NavigationMenuView = () => {
   return (
-    <StyledSafeAreaView className="h-full items-center justify-center">
+    <StyledSafeAreaView className="flex-1 items-center justify-center">
       <NavigationMenuProvider>
         <NavigationMenu title={'Getting started'}>
           <NavigationMenuSection>

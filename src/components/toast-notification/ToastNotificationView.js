@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   StyledImage,
+  StyledSafeAreaView,
   StyledText,
   StyledTouchableOpacity,
   StyledView,
@@ -11,7 +12,7 @@ const ToastNotificationView = () => {
   const {Toast} = useToast();
 
   return (
-    <StyledView className="h-full items-center justify-center">
+    <StyledSafeAreaView className="flex-1 items-center justify-center">
       <StyledView className="relative space-y-5">
         <StyledView className="relative">
           <StyledText className="mb-2 text-sm font-medium text-center text-gray-500">
@@ -140,7 +141,7 @@ const ToastNotificationView = () => {
           </StyledView>
         </StyledView>
       </StyledView>
-    </StyledView>
+    </StyledSafeAreaView>
   );
 };
 

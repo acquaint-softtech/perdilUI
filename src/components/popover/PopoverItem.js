@@ -32,9 +32,9 @@ const PopoverItem = ({title, value, onChangeText, ...popoverProps}) => {
 
 const styles = {
   container: 'flex-row w-full items-center gap-4',
-  popoverTitle: 'text-black w-1/3 text-sm font-medium leading-none',
+  popoverTitle: 'text-black w-1/3 text-sm font-medium',
   inputContainer:
-    'flex-1 h-8 col-span-2 px-3 py-2 text-sm bg-transparent border border-neutral-200/70 rounded-md border-input ring-offset-background',
+    'flex-1 h-8 px-3 py-0 text-sm bg-white border border-neutral-200/70 rounded-md leading-4',
 };
 
 export default PopoverItem;

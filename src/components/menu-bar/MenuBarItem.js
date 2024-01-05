@@ -79,7 +79,6 @@ const MenuBarItem = ({
           {title}
         </StyledText>
       </>
-      {/* <StyledText className={styles.menuItemTitle}>{title}</StyledText> */}
       {React.isValidElement(rightIcon)
         ? rightIcon
         : rightIcon && (

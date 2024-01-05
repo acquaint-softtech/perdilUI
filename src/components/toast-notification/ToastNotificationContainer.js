@@ -87,7 +87,9 @@ const ToastNotificationContainer = forwardRef((_props, ref) => {
     return (
       <StyledKeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'position' : undefined}
-        className={`absolute z-50 self-center items-center top-0 mt-4 ${topStyle}`}
+        className={`absolute self-center items-center top-0 mt-4 ${
+          Platform.OS === 'android' ? 'shadow' : 'z-[9999999999]'
+        } ${topStyle}`}
         pointerEvents="box-none">
         {toasts
           .filter(t => !t.position || t.position === 'top')
@@ -102,7 +104,9 @@ const ToastNotificationContainer = forwardRef((_props, ref) => {
     return (
       <StyledKeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'position' : undefined}
-        className={`absolute z-50 self-center items-center bottom-0 mb-4 ${bottomStyle}`}
+        className={`absolute self-center items-center bottom-0 mb-4 ${
+          Platform.OS === 'android' ? 'shadow' : 'z-[9999999999]'
+        } ${bottomStyle}`}
         pointerEvents="box-none">
         {toasts
           .filter(t => t.position === 'bottom')

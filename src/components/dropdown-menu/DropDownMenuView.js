@@ -39,75 +39,77 @@ const DropDownMenuView = () => {
   );
 
   return (
-    <DropDownMenu
-      width={253}
-      dropdownButton={DropDownButton}
-      visible={dropdownVisible}
-      onDismiss={() => setDropdownVisible(false)}>
-      <DropDownMenuSection>
-        <DropDownMenuItem
-          title={'My Profile'}
-          titleClassName={'text-base font-semibold'}
-          pressable={false}
-        />
-      </DropDownMenuSection>
-      <DropDownMenuSection>
-        <DropDownMenuItem
-          title={'Profile'}
-          leftIcon={Images.profile}
-          rightIcon={
-            <StyledText className="text-xs text-black tracking-widest opacity-60">
-              ⇧⌘P
-            </StyledText>
-          }
-        />
-      </DropDownMenuSection>
-      <DropDownMenuSection>
-        <DropDownMenuItem
-          title={'Invite users'}
-          leftIcon={Images.inviteUser}
-          rightIcon={
-            <StyledImage
-              source={Images.leftArrow}
-              className="h-4 w-4 rotate-180"
-            />
-          }
-          innerMenu={
-            <>
-              <DropDownMenuSection>
-                <DropDownMenuItem title={'Email'} leftIcon={Images.email} />
-                <DropDownMenuItem
-                  title={'Message'}
-                  leftIcon={
-                    <StyledImage
-                      source={Images.message}
-                      className="w-4 h-4"
-                    />
-                  }
-                />
-              </DropDownMenuSection>
-              <DropDownMenuSection>
-                <DropDownMenuItem title={'More...'} leftIcon={Images.more} />
-              </DropDownMenuSection>
-            </>
-          }
-        />
-      </DropDownMenuSection>
-      <DropDownMenuSection>
-        <DropDownMenuItem title={'API'} disabled leftIcon={Images.api} />
-      </DropDownMenuSection>
-      <DropDownMenuSection>
-        <DropDownMenuItem
-          title={'Log out'}
-          leftIcon={Images.logout}
-          rightIcon={
-            <StyledText className="text-xs text-black tracking-widest opacity-60">
-              ⇧⌘Q
-            </StyledText>
-          }
-        />
-      </DropDownMenuSection>
-    </DropDownMenu>
+    <StyledSafeAreaView className="flex-1 items-center justify-center">
+      <DropDownMenu
+        width={253}
+        dropdownButton={DropDownButton}
+        visible={dropdownVisible}
+        onDismiss={() => setDropdownVisible(false)}>
+        <DropDownMenuSection>
+          <DropDownMenuItem
+            title={'My Profile'}
+            titleClassName={'text-base font-semibold'}
+            pressable={false}
+          />
+        </DropDownMenuSection>
+        <DropDownMenuSection>
+          <DropDownMenuItem
+            title={'Profile'}
+            leftIcon={Images.profile}
+            rightIcon={
+              <StyledText className="text-xs text-black tracking-widest opacity-60">
+                ⇧⌘P
+              </StyledText>
+            }
+          />
+        </DropDownMenuSection>
+        <DropDownMenuSection>
+          <DropDownMenuItem
+            title={'Invite users'}
+            leftIcon={Images.inviteUser}
+            rightIcon={
+              <StyledImage
+                source={Images.leftArrow}
+                className="h-4 w-4 rotate-180"
+              />
+            }
+            innerMenu={
+              <>
+                <DropDownMenuSection>
+                  <DropDownMenuItem title={'Email'} leftIcon={Images.email} />
+                  <DropDownMenuItem
+                    title={'Message'}
+                    leftIcon={
+                      <StyledImage
+                        source={Images.message}
+                        className="w-4 h-4"
+                      />
+                    }
+                  />
+                </DropDownMenuSection>
+                <DropDownMenuSection>
+                  <DropDownMenuItem title={'More...'} leftIcon={Images.more} />
+                </DropDownMenuSection>
+              </>
+            }
+          />
+        </DropDownMenuSection>
+        <DropDownMenuSection>
+          <DropDownMenuItem title={'API'} disabled leftIcon={Images.api} />
+        </DropDownMenuSection>
+        <DropDownMenuSection>
+          <DropDownMenuItem
+            title={'Log out'}
+            leftIcon={Images.logout}
+            rightIcon={
+              <StyledText className="text-xs text-black tracking-widest opacity-60">
+                ⇧⌘Q
+              </StyledText>
+            }
+          />
+        </DropDownMenuSection>
+      </DropDownMenu>
+    </StyledSafeAreaView>
   );
 };
 

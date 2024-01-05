@@ -30,7 +30,7 @@ const NavigationMenu = ({
 
 const styles = {
   container:
-    'absolute flex-row top-0 p-5 z-50 min-w-[8rem] rounded-md border border-neutral-200/70 bg-white mt-10 shadow-md',
+    'absolute flex-row top-1 p-5 min-w-[8rem] rounded-md border border-neutral-200/70 bg-white shadow-md',
 };
 
 export default NavigationMenu;

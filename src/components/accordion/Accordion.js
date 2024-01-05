@@ -5,7 +5,7 @@
  */
 
 import React, { useState } from 'react';
-import { StyledSafeAreaView, StyledView } from '../../StyledComponentsContstants';
+import { StyledView } from '../../StyledComponentsContstants';
 
 /**
  * A component that wraps the whole accordion.
@@ -16,7 +16,7 @@ const Accordion = ({children}) => {
   const [openedElement, setOpenedElement] = useState(null);
 
   return (
-    <StyledSafeAreaView className={styles.container}>
+    <StyledView className={styles.container}>
       {React.Children.map(children, (child, index) => (
         <StyledView
           className={
@@ -25,12 +25,12 @@ const Accordion = ({children}) => {
           {React.cloneElement(child, {openedElement, setOpenedElement})}
         </StyledView>
       ))}
-    </StyledSafeAreaView>
+    </StyledView>
   );
 };
 
 const styles = {
-  container: 'flex item-center m-3 border border-gray-300 rounded-lg',
+  container: 'border border-gray-300 rounded-lg',
   divider: 'border-b border-gray-300',
 };
 

@@ -19,7 +19,7 @@ const HoverCard = ({visible, cardComponent, onDismiss, children}) => {
       {visible && (
         <StyledPressable
           onPress={onDismiss}
-          className={`absolute bg-black opacity-50 h-full w-full ${
+          className={`absolute h-full w-full ${
             Platform.OS === 'android' ? 'shadow' : 'z-[9999]'
           }`}
         />

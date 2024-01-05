@@ -14,12 +14,13 @@ import {
   StyledView,
 } from '../../StyledComponentsContstants';
 import Images from '../../assets/Images';
+import { Platform } from 'react-native';
 
 /**
  * This component is used to group the Select button and its associated options.
  */
 
-const Select = ({height, onSelect, children}) => {
+const Select = ({ onSelect, children }) => {
   const [selectedItem, setSelectedItem] = useState('');
   const [openSelectMenu, setOpenSelectMenu] = useState(false);
 
@@ -60,14 +61,14 @@ const Select = ({height, onSelect, children}) => {
 };
 
 const styles = {
-  selectContainer: 'relative',
+  selectContainer: Platform.OS === 'android' ? 'shadow' : 'z-[99999]',
   selectButton:
     'relative min-h-[38px] flex-row items-center justify-between w-full py-3 pl-3 pr-10 text-left bg-white border rounded-md shadow-sm border-gray-300',
   selectItemText: 'truncate text-base text-black',
   selectIconContainer: 'absolute inset-y-0 right-0 flex-row items-center pr-2',
   selectIcon: 'w-6 h-6 opacity-60',
   selectMenuContainer:
-    'absolute z-50 top-12 h-60 w-full bg-white border border-gray-300 rounded-md py-1 mt-1 bg-white shadow-md',
+    'absolute z-50 top-12 max-h-60 w-full bg-white border border-gray-300 rounded-md py-1 mt-1 bg-white shadow-md',
 };
 
 export default Select;

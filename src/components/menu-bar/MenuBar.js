@@ -10,6 +10,7 @@ import {
   StyledTouchableOpacity,
   StyledView,
 } from '../../StyledComponentsContstants';
+import { Platform } from 'react-native';
 
 /**
  * A wrapper component for the entire menu.
@@ -30,7 +31,7 @@ const MenuBar = ({children, containerWidth}) => {
   );
 
   return (
-    <StyledView>
+    <StyledView className={Platform.OS === 'android' ? 'shadow': 'z-[9999]'}>
       <StyledView className={styles.headerContainer}>
         <StyledView className={`${styles.header} w-[${containerWidth}px]`}>
           <StyledView className={styles.headerTitleContainer}>
