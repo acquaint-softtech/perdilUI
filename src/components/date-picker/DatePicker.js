@@ -6,14 +6,16 @@
 
 import React, {useState} from 'react';
 import {
+  StyledModal,
   StyledImage,
   StyledPressable,
+  StyledSafeAreaView,
   StyledText,
   StyledTouchableOpacity,
   StyledView,
 } from '../../StyledComponentsContstants';
 import Images from '../../assets/Images';
-import { Platform } from 'react-native';
+import {Platform} from 'react-native';
 
 /**
  * This component can be used to select a date.
@@ -155,79 +157,87 @@ const DatePicker = ({
   };
 
   return (
-    <>
+    <StyledView className={styles.datepickerContainer}>
       {datePickerInput}
-      {visible && (
-        <StyledPressable
-          onPress={onDismiss}
-          className="absolute top-0 left-0 bottom-0 right-0 z-[9999]"
-        />
-      )}
-      <StyledView className={styles.datepickerContainer}>
-        {visible && (
-          <StyledView className={styles.datepicker}>
-            {renderHeader()}
-            {renderDays()}
-            <StyledView>
-              {renderCalendar().map((week, i) => (
-                <StyledView key={i} className={styles.week}>
-                  {week.map((date, index) => (
-                    <StyledTouchableOpacity
-                      key={index}
-                      className={styles.dayContainer}
-                      onPress={() => onDayPress(date)}
-                      disabled={!date}>
-                      <StyledView
-                        className={`${styles.dateContainer} ${
-                          currentDate?.getDate() === date &&
-                          currentDate?.getMonth() ===
-                            currentMonth?.getMonth() &&
-                          currentDate?.getFullYear() ===
-                            currentMonth?.getFullYear() &&
-                          'bg-neutral-200'
-                        } ${
-                          selectedDate?.getDate() === date &&
-                          selectedDate?.getMonth() ===
-                            currentMonth?.getMonth() &&
-                          selectedDate?.getFullYear() ===
-                            currentMonth?.getFullYear() &&
-                          'bg-neutral-800'
-                        }`}>
-                        <StyledText
-                          className={`${styles.dayText} ${
+      <StyledModal
+        transparent
+        visible={visible}
+        animationType="fade"
+        onDismiss={onDismiss}
+        onRequestClose={onDismiss}>
+        <StyledView className={styles.datePickerModalContainer}>
+          <StyledPressable
+            onPress={onDismiss}
+            className={styles.overlayContainer}
+          />
+          <StyledView className={'w-full p-3'}>
+            <StyledView className={styles.datepicker}>
+              {renderHeader()}
+              {renderDays()}
+              <StyledView>
+                {renderCalendar().map((week, i) => (
+                  <StyledView key={i} className={styles.week}>
+                    {week.map((date, index) => (
+                      <StyledTouchableOpacity
+                        key={index}
+                        className={styles.dayContainer}
+                        onPress={() => onDayPress(date)}
+                        disabled={!date}>
+                        <StyledView
+                          className={`${styles.dateContainer} ${
                             currentDate?.getDate() === date &&
                             currentDate?.getMonth() ===
                               currentMonth?.getMonth() &&
                             currentDate?.getFullYear() ===
                               currentMonth?.getFullYear() &&
-                            'text-black'
+                            'bg-neutral-200'
                           } ${
                             selectedDate?.getDate() === date &&
                             selectedDate?.getMonth() ===
                               currentMonth?.getMonth() &&
                             selectedDate?.getFullYear() ===
                               currentMonth?.getFullYear() &&
-                            'text-white'
+                            'bg-neutral-800'
                           }`}>
-                          {date.toString()}
-                        </StyledText>
-                      </StyledView>
-                    </StyledTouchableOpacity>
-                  ))}
-                </StyledView>
-              ))}
+                          <StyledText
+                            className={`${styles.dayText} ${
+                              currentDate?.getDate() === date &&
+                              currentDate?.getMonth() ===
+                                currentMonth?.getMonth() &&
+                              currentDate?.getFullYear() ===
+                                currentMonth?.getFullYear() &&
+                              'text-black'
+                            } ${
+                              selectedDate?.getDate() === date &&
+                              selectedDate?.getMonth() ===
+                                currentMonth?.getMonth() &&
+                              selectedDate?.getFullYear() ===
+                                currentMonth?.getFullYear() &&
+                              'text-white'
+                            }`}>
+                            {date.toString()}
+                          </StyledText>
+                        </StyledView>
+                      </StyledTouchableOpacity>
+                    ))}
+                  </StyledView>
+                ))}
+              </StyledView>
             </StyledView>
           </StyledView>
-        )}
-      </StyledView>
-    </>
+        </StyledView>
+      </StyledModal>
+    </StyledView>
   );
 };
 
 const styles = {
-  datepickerContainer: `${Platform.OS === 'android' ? 'shadow' : 'z-[999999]'} items-center`,
-  datepicker:
-    'absolute top-1 p-4 bg-white border rounded-lg shadow border-neutral-200 w-full',
+  datepickerContainer: `${
+    Platform.OS === 'android' ? 'shadow' : 'z-[999999]'
+  }`,
+  datePickerModalContainer: 'flex-1 items-center justify-center',
+  overlayContainer: 'absolute bg-black opacity-50 h-full w-full',
+  datepicker: 'p-4 bg-white border rounded-lg shadow border-neutral-200 w-full',
   header: 'flex-row justify-between items-center mb-2',
   monthAndYearContainer: 'flex-row items-center space-x-1',
   month: 'text-lg font-bold text-gray-800',

@@ -49,7 +49,7 @@ const ImageGallery = ({images = []}) => {
           data={images}
           renderItem={renderItem}
           numColumns={Math.round(Dimensions.get('window').width / 150)}
-          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
           ListFooterComponent={() => <StyledView className="m-[5px]" />}
           ListHeaderComponent={() => <StyledView className="m-[5px]" />}
           ItemSeparatorComponent={() => <StyledView className="m-[5px]" />}
@@ -124,7 +124,7 @@ const styles = {
   rightArrowButton:
     'z-50 absolute h-10 w-10 bg-gray-400 opacity-50 rounded-full items-center justify-center right-8',
   previewImage:
-    'flex select-none h-[170px] bg-gray-200 rounded mx-[5px] aspect-[5/7]',
+    'h-[170px] rounded mx-[5px] aspect-[5/7]',
 };
 
 export default ImageGallery;
