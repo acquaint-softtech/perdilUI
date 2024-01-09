@@ -14,11 +14,11 @@ Perdil UI Kit is a React Native UI Library that allows you to create stunning mu
 ## Quick Start
 ### 1. Install
 ```bash
-npm install --save https://github.com/acquaint-softtech/perdilUI
+npm i perdil-ui
 ```
 or
 ```bash
-yarn add https://github.com/acquaint-softtech/perdilUI
+yarn add perdil-ui
 ```
 
 ### 2. Setup Tailwind CSS
