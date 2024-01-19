@@ -23,4 +23,4 @@ export { TextareaAutoResize, TextareaAutoResizeView } from './textarea-auto-resi
 export { ToastNotification, ToastNotificationContainer, ToastNotificationProvider, ToastNotificationView, useToast } from './toast-notification';
 export { Tooltip, TooltipView } from './tool-tip';
 export { TypingEffect, TypingEffectView } from './typing-effect';
-
+export { Video, VideoPlayer } from './video-player';

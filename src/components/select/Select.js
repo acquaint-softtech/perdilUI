@@ -1,10 +1,11 @@
 /**
  * @license
  * Copyright Acquaint softtech. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
+ * Licensed under the ISC License. See License.txt in the project root for license information.
  */
 
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { Platform } from 'react-native';
 import {
   StyledImage,
   StyledSafeAreaView,
@@ -14,7 +15,6 @@ import {
   StyledView,
 } from '../../StyledComponentsContstants';
 import Images from '../../assets/Images';
-import { Platform } from 'react-native';
 
 /**
  * This component is used to group the Select button and its associated options.

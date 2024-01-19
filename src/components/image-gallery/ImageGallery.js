@@ -1,11 +1,11 @@
 /**
  * @license
  * Copyright Acquaint softtech. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
+ * Licensed under the ISC License. See License.txt in the project root for license information.
  */
 
-import React, {useState} from 'react';
-import {Dimensions, ScrollView} from 'react-native';
+import React, { useState } from 'react';
+import { Dimensions } from 'react-native';
 import {
   StyledFlatList,
   StyledImage,

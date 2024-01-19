@@ -7,9 +7,18 @@
   "main": "index.js",
   "author": "Acquaint softtech",
   "repository": "git+https://github.com/acquaint-softtech/perdilUI.git",
+  "homepage": "https://github.com/acquaint-softtech/perdilUI#readme",
   "bugs": {
     "url": "https://github.com/acquaint-softtech/perdilUI/issues"
   },
+  "files": [
+    "android",
+    "index.js",
+    "perdil-ui.podspec",
+    "ios",
+    "macos",
+    "src"
+  ],
   "workspaces": {
     "packages": [
       "src/*"

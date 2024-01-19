@@ -6,8 +6,8 @@ import {
   StyledText,
   StyledView,
 } from '../../StyledComponentsContstants';
-import DatePicker from './DatePicker';
 import Images from '../../assets/Images';
+import DatePicker from './DatePicker';
 
 const DatePickerView = () => {
   const [date, setDate] = useState(new Date());

@@ -1,12 +1,12 @@
 /**
  * @license
  * Copyright Acquaint softtech. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
+ * Licensed under the ISC License. See License.txt in the project root for license information.
  */
 
 import React, { useState } from 'react';
-import { StyledPressable, StyledView } from '../../StyledComponentsContstants';
 import { Platform } from 'react-native';
+import { StyledPressable, StyledView } from '../../StyledComponentsContstants';
 
 /**
  * A component that wraps the whole dropdown.

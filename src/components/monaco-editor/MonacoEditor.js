@@ -1,10 +1,11 @@
 /**
  * @license
  * Copyright Acquaint softtech. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
+ * Licensed under the ISC License. See License.txt in the project root for license information.
  */
 
-import React, {useRef} from 'react';
+import React, { useRef } from 'react';
+import { Platform } from 'react-native';
 import {
   StyledKeyboardAvoidingView,
   StyledPressable,
@@ -13,7 +14,6 @@ import {
   StyledTextInput,
   StyledView,
 } from '../../StyledComponentsContstants';
-import {Platform} from 'react-native';
 
 /**
  * A simple text editor component using the Monaco Editor library.

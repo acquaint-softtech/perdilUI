@@ -1,16 +1,16 @@
 /**
  * @license
  * Copyright Acquaint softtech. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
+ * Licensed under the ISC License. See License.txt in the project root for license information.
  */
 
 import React, { useState } from 'react';
+import { Platform } from 'react-native';
 import {
   StyledText,
   StyledTouchableOpacity,
   StyledView,
 } from '../../StyledComponentsContstants';
-import { Platform } from 'react-native';
 
 /**
  * A wrapper component for the entire menu.

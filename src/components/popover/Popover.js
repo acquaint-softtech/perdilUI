@@ -1,12 +1,12 @@
 /**
  * @license
  * Copyright Acquaint softtech. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
+ * Licensed under the ISC License. See License.txt in the project root for license information.
  */
 
 import React from 'react';
-import { StyledText, StyledView } from '../../StyledComponentsContstants';
 import { Platform } from 'react-native';
+import { StyledText, StyledView } from '../../StyledComponentsContstants';
 
 /**
  * A popover component wrapper that can wrap and display rich content in a portal, triggered by a button.
