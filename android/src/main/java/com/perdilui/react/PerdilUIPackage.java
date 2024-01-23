@@ -1,36 +1,38 @@
 package com.perdilui.react;
 
 import com.facebook.react.ReactPackage;
-import com.facebook.react.bridge.JavaScriptModule;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
+import com.perdilui.clipboard.ClipboardModule;
 import com.perdilui.exoplayer.DefaultReactExoplayerConfig;
 import com.perdilui.exoplayer.ReactExoplayerConfig;
 import com.perdilui.exoplayer.ReactExoplayerViewManager;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ReactVideoPackage implements ReactPackage {
+public class PerdilUIPackage implements ReactPackage {
 
     private ReactExoplayerConfig config;
 
-    public ReactVideoPackage() {
+    public PerdilUIPackage() {
     }
 
-    public ReactVideoPackage(ReactExoplayerConfig config) {
+    public PerdilUIPackage(ReactExoplayerConfig config) {
         this.config = config;
     }
 
-    @Override
-    public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        return Collections.emptyList();
-    }
 
     // Deprecated RN 0.47
-    public List<Class<? extends JavaScriptModule>> createJSModules() {
-        return Collections.emptyList();
+    @Override
+    public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
+        List<NativeModule> modules = new ArrayList<>();
+
+        modules.add(new ClipboardModule(reactContext));
+
+        return modules;
     }
 
 

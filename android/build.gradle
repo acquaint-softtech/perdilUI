@@ -26,6 +26,17 @@ def resolveReactNativeDirectory() {
     if (reactNativeFromProjectNodeModules.exists()) {
         return reactNativeFromProjectNodeModules
     }
+
+    def reactNativeFromNodeModulesWithReactNativeClipboard = file("${projectDir}/../../../react-native")
+    if (reactNativeFromNodeModulesWithReactNativeClipboard.exists()) {
+        return reactNativeFromNodeModulesWithReactNativeClipboard
+    }
+
+    throw new Exception(
+            "[perdil-ui] Unable to resolve react-native location in " +
+                    "node_modules. You should add project extension property (in app/build.gradle) " +
+                    "`REACT_NATIVE_NODE_MODULES_DIR` with path to react-native."
+    )
 }
 
 def REACT_NATIVE_DIR = resolveReactNativeDirectory()

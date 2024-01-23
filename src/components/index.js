@@ -2,6 +2,7 @@ export { Accordion, AccordionItem, AccordionView } from './accordion';
 export { Banner, BannerView } from './banner';
 export { Command, CommandItem, CommandSection, CommandView } from './command';
 export { ContextMenu, ContextMenuItem, ContextMenuSection, ContextMenuView } from './context-menu';
+export { Clipboard, CopyToClipboardView, useClipboard } from './copy-to-clipboard';
 export { DatePicker, DatePickerView } from './date-picker';
 export { DropDownMenu, DropDownMenuItem, DropDownMenuSection, DropDownMenuView } from './dropdown-menu';
 export { FullScreenModal, FullScreenModalView } from './full-screen-modal';
