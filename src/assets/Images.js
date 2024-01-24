@@ -35,8 +35,6 @@ const Images = {
   toastWarning: require('./toast-warning.png'),
   toastDanger: require('./toast-danger.png'),
   datePicker: require('./date-picker.png'),
-  copyToClipboard: require('./copy-to-clipboard.png'),
-  copiedToClipboard: require('./copied-to-clipboard.png'),
 };
 
 export default Images;

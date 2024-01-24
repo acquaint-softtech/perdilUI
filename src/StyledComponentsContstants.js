@@ -12,7 +12,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Video from '../src/components/video-player/Video';
 
 export const StyledSafeAreaView = styled(SafeAreaView);
 export const StyledView = styled(View);
@@ -25,4 +24,3 @@ export const StyledFlatList = styled(FlatList);
 export const StyledPressable = styled(Pressable);
 export const StyledModal = styled(Modal);
 export const StyledScrollView = styled(ScrollView);
-export const StyledVideo = styled(Video);

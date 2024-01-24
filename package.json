@@ -11,14 +11,6 @@
   "bugs": {
     "url": "https://github.com/acquaint-softtech/perdilUI/issues"
   },
-  "files": [
-    "android",
-    "index.js",
-    "perdil-ui.podspec",
-    "ios",
-    "macos",
-    "src"
-  ],
   "workspaces": {
     "packages": [
       "src/*"
@@ -48,13 +40,5 @@
     "jest": "^29.6.3",
     "prettier": "2.8.8",
     "react-test-renderer": "18.2.0"
-  },
-  "codegenConfig": {
-    "name": "perdilClipboard",
-    "type": "modules",
-    "jsSrcsDir": "./src",
-    "android": {
-      "javaPackageName": "com.perdilui.react"
-    }
   }
 }
